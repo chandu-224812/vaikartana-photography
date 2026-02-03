@@ -46,4 +46,14 @@ document.querySelectorAll('.video-gallery video').forEach(video => {
     video.addEventListener('mouseenter', () => video.play());
     video.addEventListener('mouseleave', () => video.pause());
   });
+function slidePortfolio(direction) {
+  const slider = document.getElementById("portfolioSlider");
+  const scrollAmount = 320; // image width + gap
+
+  slider.scrollBy({
+    left: direction * scrollAmount,
+    behavior: "smooth"
+  });
+}
+
   
