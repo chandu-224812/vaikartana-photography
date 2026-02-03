@@ -5,22 +5,16 @@
     <title>Vaikartana Photography</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
     <!-- HERO SECTION -->
     <header class="hero">
         <div class="overlay"></div>
-
         <div class="hero-content">
             <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/logo.jpeg" alt="Vaikartana Photography Logo" class="logo">
-
-
             <h1>Vaikartana Photography</h1>
             <p class="byline">By Chandu Goud</p>
-
             <p class="tagline">Cinematic stories. Real emotions.</p>
-
             <a href="#book" class="btn">Book Your Event</a>
         </div>
     </header>
@@ -31,12 +25,10 @@
         <p class="booking-text">
             Let’s capture your moments. Fill in the details and we’ll get back to you.
         </p>
-
         <form action="https://formspree.io/f/xkozykkp" method="POST" class="booking-form">
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="email" name="email" placeholder="Email Address" required>
             <input type="tel" name="phone" placeholder="Phone Number" required>
-
             <select name="event_type" required>
                 <option value="">Select Event Type</option>
                 <option>Wedding</option>
@@ -46,61 +38,54 @@
                 <option>Short Film</option>
                 <option>Cinematography</option>
             </select>
-
             <input type="date" name="event_date" required>
-
             <textarea name="message" placeholder="Tell us about your event" rows="5"></textarea>
-
             <button type="submit">Submit Booking</button>
         </form>
     </section>
 
     <!-- PORTFOLIO SECTION -->
-<section id="portfolio" class="portfolio">
-    <h2>Our Work</h2>
-    <p class="portfolio-text">Moments captured, stories told.</p>
+    <section id="portfolio" class="portfolio">
+        <h2>Our Work</h2>
+        <p class="portfolio-text">Moments captured, stories told.</p>
 
-    <!-- Category Buttons for Images -->
-    <div class="portfolio-categories">
-        <button class="category-btn active" onclick="filterPortfolio('all')">All</button>
-        <button class="category-btn" onclick="filterPortfolio('wedding')">Wedding</button>
-        <button class="category-btn" onclick="filterPortfolio('birthday')">Birthday</button>
-        <button class="category-btn" onclick="filterPortfolio('event')">Event</button>
-        <button class="category-btn" onclick="filterPortfolio('shortfilm')">Films</button>
-    </div>
+        <!-- Category Buttons -->
+        <div class="portfolio-categories">
+            <button class="category-btn active" onclick="filterPortfolio('all', this)">All</button>
+            <button class="category-btn" onclick="filterPortfolio('wedding', this)">Wedding</button>
+            <button class="category-btn" onclick="filterPortfolio('birthday', this)">Birthday</button>
+            <button class="category-btn" onclick="filterPortfolio('event', this)">Event</button>
+            <button class="category-btn" onclick="filterPortfolio('shortfilm', this)">Films</button>
+        </div>
 
-    <div class="portfolio-slider-wrapper">
+        <!-- Slider -->
+        <div class="portfolio-slider-wrapper">
+            <button class="nav-btn prev" onclick="slidePortfolio(-1)">❮</button>
+            <div class="portfolio-slider" id="portfolioSlider">
+                <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/wedding1.jpeg" class="wedding">
+                <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/wedding2.jpeg" class="wedding">
+                <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/wedding3.jpeg" class="event">
+                <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/birthday1.jpeg" class="birthday">
+                <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/wedding4.jpeg" class="shortfilm">
+                <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/event1.jpeg" class="event">
+                <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/film1.jpeg" class="shortfilm">
+            </div>
+            <button class="nav-btn next" onclick="slidePortfolio(1)">❯</button>
+        </div>
 
-  <button class="nav-btn prev" onclick="slidePortfolio(-1)">❮</button>
-
-  <div class="portfolio-slider" id="portfolioSlider">
-    <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/wedding1.jpeg" class="wedding">
-    <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/wedding2.jpeg" class="wedding">
-    <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/wedding3.jpeg" class="event">
-    <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/birthday1.jpeg" class="birthday">
-    <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/wedding4.jpeg" class="shortfilm">
-  </div>
-
-  <button class="nav-btn next" onclick="slidePortfolio(1)">❯</button>
-
-</div>
-
-    <!-- VIDEOS / CINEMATOGRAPHY -->
-    <h3 class="video-section-title">Cinematography / Short Films</h3>
-<div class="video-gallery">
-    <video controls width="100%">
-        <source src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/portfolio/cinema1.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
-    <video controls width="100%">
-        <source src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/shortfilm1.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
-
-        <!-- Add more videos here -->
-</section>
+        <!-- VIDEOS / CINEMATOGRAPHY -->
+        <h3 class="video-section-title">Cinematography / Short Films</h3>
+        <div class="video-gallery">
+            <video muted>
+                <source src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/portfolio/cinema1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video muted>
+                <source src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/shortfilm1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
 
     <!-- LIGHTBOX -->
     <div id="lightbox" class="lightbox">
@@ -110,14 +95,5 @@
 
     <!-- JS SCRIPT -->
     <script src="script.js"></script>
-
 </body>
 </html>
-
-
-
-
-
-
-
-
