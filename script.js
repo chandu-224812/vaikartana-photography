@@ -2,13 +2,15 @@
 // PORTFOLIO SLIDER
 // =====================
 const slider = document.getElementById("portfolioSlider");
-let scrollAmount = 320; // width + gap of each image
+let currentCategory = 'all'; // track active category
 
-// Scroll slider left/right
+// Scroll slider left/right for visible images
 function slidePortfolio(direction) {
-  const visibleImgs = Array.from(slider.querySelectorAll("img")).filter(img => img.style.display !== "none");
+  const visibleImgs = Array.from(slider.querySelectorAll("img"))
+                           .filter(img => img.style.display !== "none");
   if (visibleImgs.length === 0) return;
 
+  const scrollAmount = visibleImgs[0].offsetWidth + 20; // width + gap
   slider.scrollBy({
     left: direction * scrollAmount,
     behavior: "smooth"
@@ -20,6 +22,7 @@ function slidePortfolio(direction) {
 // =====================
 function filterPortfolio(category, btn) {
   const images = slider.querySelectorAll("img");
+  currentCategory = category; // update current category
 
   images.forEach(img => {
     if (category === "all") img.style.display = "block";
@@ -58,6 +61,8 @@ lightbox.addEventListener('click', e => {
 });
 
 // =====================
+// VIDEO FUNCTIONALITY
+// =====================
 
 // Video hover autoplay + click to toggle sound
 document.querySelectorAll('.video-gallery video').forEach(video => {
@@ -75,4 +80,3 @@ document.querySelectorAll('.video-gallery video').forEach(video => {
     }
   });
 });
-
