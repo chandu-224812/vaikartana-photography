@@ -1,54 +1,13 @@
-function filterPortfolio(category) {
-    let images = document.querySelectorAll('.photo-grid img');
-  
-    if(category === 'all') {
-      images.forEach(img => img.style.display = 'block');
-    } else {
-      images.forEach(img => {
-        if(img.classList.contains(category)) {
-          img.style.display = 'block';
-        } else {
-          img.style.display = 'none';
-        }
-      });
-    }
+// =====================
+// PORTFOLIO SLIDER
+// =====================
+const slider = document.getElementById("portfolioSlider");
+let scrollAmount = 320; // width + gap of each image
 
-    // Update active button
-    document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-  }
-
-// LIGHTBOX FUNCTIONALITY
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.querySelector('.lightbox-img');
-const closeBtn = document.querySelector('.lightbox .close');
-
-document.querySelectorAll('.photo-grid img').forEach(img => {
-  img.addEventListener('click', () => {
-    lightbox.style.display = 'flex';
-    lightboxImg.src = img.src;
-  });
-});
-
-closeBtn.addEventListener('click', () => {
-  lightbox.style.display = 'none';
-});
-
-// Click outside image closes lightbox
-lightbox.addEventListener('click', e => {
-  if(e.target === lightbox) {
-    lightbox.style.display = 'none';
-  }
-});
-
-// VIDEO HOVER AUTOPLAY
-document.querySelectorAll('.video-gallery video').forEach(video => {
-    video.addEventListener('mouseenter', () => video.play());
-    video.addEventListener('mouseleave', () => video.pause());
-  });
+// Scroll slider left/right
 function slidePortfolio(direction) {
-  const slider = document.getElementById("portfolioSlider");
-  const scrollAmount = 320; // image width + gap
+  const visibleImgs = Array.from(slider.querySelectorAll("img")).filter(img => img.style.display !== "none");
+  if (visibleImgs.length === 0) return;
 
   slider.scrollBy({
     left: direction * scrollAmount,
@@ -56,4 +15,52 @@ function slidePortfolio(direction) {
   });
 }
 
-  
+// =====================
+// CATEGORY FILTER
+// =====================
+function filterPortfolio(category, btn) {
+  const images = slider.querySelectorAll("img");
+
+  images.forEach(img => {
+    if (category === "all") img.style.display = "block";
+    else if (img.classList.contains(category)) img.style.display = "block";
+    else img.style.display = "none";
+  });
+
+  slider.scrollLeft = 0; // reset slider to start
+
+  // Highlight active button
+  document.querySelectorAll(".category-btn").forEach(b => b.classList.remove("active"));
+  if (btn) btn.classList.add("active");
+}
+
+// =====================
+// LIGHTBOX FUNCTIONALITY
+// =====================
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.querySelector('.lightbox-img');
+const closeBtn = document.querySelector('.lightbox .close');
+
+// Open lightbox on image click
+slider.querySelectorAll('img').forEach(img => {
+  img.addEventListener('click', () => {
+    lightbox.style.display = 'flex';
+    lightboxImg.src = img.src;
+  });
+});
+
+// Close lightbox
+closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
+
+// Click outside image closes lightbox
+lightbox.addEventListener('click', e => {
+  if(e.target === lightbox) lightbox.style.display = 'none';
+});
+
+// =====================
+// VIDEO HOVER AUTOPLAY
+// =====================
+document.querySelectorAll('.video-gallery video').forEach(video => {
+    video.addEventListener('mouseenter', () => video.play());
+    video.addEventListener('mouseleave', () => video.pause());
+});
