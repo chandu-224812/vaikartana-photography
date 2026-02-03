@@ -58,9 +58,21 @@ lightbox.addEventListener('click', e => {
 });
 
 // =====================
-// VIDEO HOVER AUTOPLAY
-// =====================
+
+// Video hover autoplay + click to toggle sound
 document.querySelectorAll('.video-gallery video').forEach(video => {
-    video.addEventListener('mouseenter', () => video.play());
-    video.addEventListener('mouseleave', () => video.pause());
+  // Hover plays/pauses (muted)
+  video.addEventListener('mouseenter', () => video.play());
+  video.addEventListener('mouseleave', () => video.pause());
+
+  // Click toggles sound
+  video.addEventListener('click', () => {
+    if(video.muted) {
+      video.muted = false;
+      video.play();
+    } else {
+      video.muted = true;
+    }
+  });
 });
+
