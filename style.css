@@ -7,11 +7,12 @@ body {
   
   /* HERO SECTION */
   .hero {
-    height: 100vh;
-    background: url("images/hero.jpeg") no-repeat center center/cover;
-    position: relative;
-  }
-  
+  height: 100vh;
+  background: url("https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/hero.jpeg")
+              center center / cover no-repeat;
+  position: relative;
+}
+
   .overlay {
     position: absolute;
     inset: 0;
@@ -262,4 +263,5 @@ body {
     transform: scale(1.05);
     filter: brightness(1.1);
   }
+
   
