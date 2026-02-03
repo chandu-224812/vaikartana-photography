@@ -69,24 +69,21 @@
         <button class="category-btn" onclick="filterPortfolio('shortfilm')">Films</button>
     </div>
 
-    <!-- IMAGE GRID -->
-    <div class="photo-grid">
-        <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/wedding1.jpeg" alt="Wedding 1" class="wedding">
-        <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/wedding2.jpeg" alt="Wedding 2" class="wedding">
-        <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/wedding3.jpeg" alt="Wedding 3" class="event">
-        <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/birthday1.jpeg" alt="Birthday 1" class="birthday">
-        <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/wedding4.jpeg" alt="Wedding 4" class="shortfilm">
-        <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/event1.jpeg" alt="Event 1" class="event">
-        <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/event2.jpeg" alt="Event 2" class="event">
-        <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/event3.jpeg" alt="Event 3" class="event">
-        <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/film1.jpeg" alt="Film 1" class="shortfilm">
+    <div class="portfolio-slider-wrapper">
 
+  <button class="nav-btn prev" onclick="slidePortfolio(-1)">❮</button>
 
+  <div class="portfolio-slider" id="portfolioSlider">
+    <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/wedding1.jpeg" class="wedding">
+    <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/wedding2.jpeg" class="wedding">
+    <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/wedding3.jpeg" class="event">
+    <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/birthday1.jpeg" class="birthday">
+    <img src="https://raw.githubusercontent.com/chandu-224812/vaikartana-photography/main/wedding4.jpeg" class="shortfilm">
+  </div>
 
+  <button class="nav-btn next" onclick="slidePortfolio(1)">❯</button>
 
-
-        <!-- Add more images with proper class -->
-    </div>
+</div>
 
     <!-- VIDEOS / CINEMATOGRAPHY -->
     <h3 class="video-section-title">Cinematography / Short Films</h3>
@@ -116,6 +113,7 @@
 
 </body>
 </html>
+
 
 
 
