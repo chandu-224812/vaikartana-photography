@@ -4,7 +4,6 @@
 const slider = document.getElementById("portfolioSlider");
 let currentCategory = 'all'; // track active category
 
-// Scroll slider left/right for visible images
 function slidePortfolio(direction) {
   const visibleImgs = Array.from(slider.querySelectorAll("img"))
                            .filter(img => img.style.display !== "none");
@@ -22,7 +21,7 @@ function slidePortfolio(direction) {
 // =====================
 function filterPortfolio(category, btn) {
   const images = slider.querySelectorAll("img");
-  currentCategory = category; // update current category
+  currentCategory = category;
 
   images.forEach(img => {
     if (category === "all") img.style.display = "block";
@@ -30,23 +29,40 @@ function filterPortfolio(category, btn) {
     else img.style.display = "none";
   });
 
-  slider.scrollLeft = 0; // reset slider to start
+  slider.scrollLeft = 0;
 
-  // Highlight active button
   document.querySelectorAll(".category-btn").forEach(b => b.classList.remove("active"));
   if (btn) btn.classList.add("active");
 }
 
 // =====================
-// LIGHTBOX FUNCTIONALITY
+// LIGHTBOX FUNCTIONALITY WITH SLIDER
 // =====================
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.querySelector('.lightbox-img');
 const closeBtn = document.querySelector('.lightbox .close');
 
+// Add Prev/Next buttons inside lightbox dynamically
+const prevBtn = document.createElement('button');
+prevBtn.className = 'lightbox-nav prev';
+prevBtn.innerHTML = '❮';
+const nextBtn = document.createElement('button');
+nextBtn.className = 'lightbox-nav next';
+nextBtn.innerHTML = '❯';
+lightbox.appendChild(prevBtn);
+lightbox.appendChild(nextBtn);
+
+let currentIndex = 0;
+let visibleImages = [];
+
 // Open lightbox on image click
-slider.querySelectorAll('img').forEach(img => {
+slider.querySelectorAll('img').forEach((img, idx) => {
   img.addEventListener('click', () => {
+    // Only include images currently visible (category filter)
+    visibleImages = Array.from(slider.querySelectorAll('img'))
+                         .filter(i => i.style.display !== 'none');
+    currentIndex = visibleImages.indexOf(img);
+
     lightbox.style.display = 'flex';
     lightboxImg.src = img.src;
   });
@@ -54,23 +70,30 @@ slider.querySelectorAll('img').forEach(img => {
 
 // Close lightbox
 closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
-
-// Click outside image closes lightbox
 lightbox.addEventListener('click', e => {
-  if(e.target === lightbox) lightbox.style.display = 'none';
+  if (e.target === lightbox) lightbox.style.display = 'none';
+});
+
+// Lightbox Prev/Next navigation
+prevBtn.addEventListener('click', () => {
+  if(visibleImages.length === 0) return;
+  currentIndex = (currentIndex - 1 + visibleImages.length) % visibleImages.length;
+  lightboxImg.src = visibleImages[currentIndex].src;
+});
+
+nextBtn.addEventListener('click', () => {
+  if(visibleImages.length === 0) return;
+  currentIndex = (currentIndex + 1) % visibleImages.length;
+  lightboxImg.src = visibleImages[currentIndex].src;
 });
 
 // =====================
 // VIDEO FUNCTIONALITY
 // =====================
-
-// Video hover autoplay + click to toggle sound
 document.querySelectorAll('.video-gallery video').forEach(video => {
-  // Hover plays/pauses (muted)
   video.addEventListener('mouseenter', () => video.play());
   video.addEventListener('mouseleave', () => video.pause());
 
-  // Click toggles sound
   video.addEventListener('click', () => {
     if(video.muted) {
       video.muted = false;
