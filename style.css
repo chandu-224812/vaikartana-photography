@@ -317,6 +317,20 @@ body {
   background: rgba(0,0,0,0.85);
 }
 
+.portfolio-slider img:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s;
+}
+
+@media (max-width: 768px) {
+  .portfolio-slider img {
+    width: 220px;
+    height: 160px;
+  }
+}
+
+
 
   
+
 
